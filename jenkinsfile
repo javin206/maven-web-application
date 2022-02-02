@@ -11,6 +11,7 @@ properties([pipelineTriggers([cron('* * * * *')])])
     {
         sh "${maven_home}/bin/mvn clean package"
     }
+    /*
     stage('execute_sonar_qube')
     {
         sh "${maven_home}/bin/mvn sonar:sonar"
@@ -31,4 +32,5 @@ properties([pipelineTriggers([cron('* * * * *')])])
       mail bcc: '', body: '''build
 ''', cc: 'bethapudi206@gmail.com', from: '', replyTo: '', subject: 'pipeline_project build report', to: 'devops.javin@gmail.com'
     }
+    */
 }
