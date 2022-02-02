@@ -1,0 +1,37 @@
+node
+{
+
+def maven_home = tool name: "maven3.6.2"
+properties([pipelineTriggers([cron('* * * * *')])])
+
+    stage('CheckoutCode')
+    {
+        git branch: 'development', credentialsId: 'git', url: 'https://github.com/javin206/maven-web-application.git'
+    }
+    stage('Build')
+    {
+        sh "${maven_home}/bin/mvn clean package"
+    }
+    stage('execute_sonar_qube')
+    {
+        sh "${maven_home}/bin/mvn sonar:sonar"
+    }
+    stage('Upload_artifact_into_nexus')
+    {
+        sh "${maven_home}/bin/mvn deploy"
+    }
+    
+    stage('deploy_app_into_tomcat')
+    {
+        sshagent(['d54c2728-97fa-42cb-8c8f-04da157136fc'])
+        {
+            sh " scp -o StrictHostKeyChecking=no  target/maven-web-application.war ubuntu@3.95.213.94:/opt/tomcat/webapps/"
+        }
+    }
+    stage('sending_mail')
+    {
+        mail bcc: '', body: '''-----------build report------------
+''', cc: 'bethapudi206@gmail.com', from: '', replyTo: '', subject: 'pipeline_project build report', to: 'devops.javin@gmail.com'
+    }
+
+}
