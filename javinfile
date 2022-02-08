@@ -2,7 +2,6 @@ node
 {
 
 def maven_home = tool name: "maven"
-properties([pipelineTriggers([cron('* * * * *')])])
 
     stage('CheckoutCode')
     {
