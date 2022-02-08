@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<groupId>com.mt</groupId>
+	<groupId>com.javin-inustry</groupId>
 	<artifactId>maven-web-application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
@@ -21,8 +21,8 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://52.204.218.68:9000</sonar.host.url>
-                <sonar.login>1a06ed66dd9f28511cdcd55e0f1d1c00cd8b3aed</sonar.login>
+		<sonar.host.url>http://34.193.179.86:9000</sonar.host.url>
+                <sonar.login>9d3df937695b46626056edd1096cde003813a040</sonar.login>
 		<!--<sonar.password>admin</sonar.password>  -->
               
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -99,13 +99,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://18.213.164.113:8081/repository/maven-releases/</url>
+	      <url>http://44.193.67.4:8081/javin/repository/devops-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://18.213.164.113:8081/repository/maven-snapshots/</url>
+	      <url>http://44.193.67.4:8081/javin/repository/devops-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
