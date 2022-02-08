@@ -11,6 +11,7 @@ def maven_home = tool name: "maven"
     {
         sh "${maven_home}/bin/mvn clean package"
     }
+    /**
     stage('execute_sonar_qube')
     {
         sh "${maven_home}/bin/mvn sonar:sonar"
@@ -31,6 +32,11 @@ def maven_home = tool name: "maven"
     {
         mail bcc: '', body: '''-----------build report------------
 ''', cc: 'bethapudi206@gmail.com', from: '', replyTo: '', subject: 'pipeline_project build report', to: 'devops.javin@gmail.com'
+    }
+    **/
+    stage('build docker images')
+    {
+       sh "docker build -t dockerhandson/spring-boot-mongo:latest ."
     }
 
 }
