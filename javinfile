@@ -6,7 +6,7 @@ properties([pipelineTriggers([cron('* * * * *')])])
 
     stage('CheckoutCode')
     {
-        git branch: 'development', credentialsId: 'git', url: 'https://github.com/javin206/maven-web-application.git'
+        git branch: 'development', credentialsId: 'GIT', url: 'https://github.com/javin206/maven-web-application.git'
     }
     stage('Build')
     {
@@ -23,9 +23,9 @@ properties([pipelineTriggers([cron('* * * * *')])])
     
     stage('deploy_app_into_tomcat')
     {
-        sshagent(['d54c2728-97fa-42cb-8c8f-04da157136fc'])
+        sshagent(['tomcat'])
         {
-            sh " scp -o StrictHostKeyChecking=no  target/maven-web-application.war ubuntu@3.95.213.94:/opt/tomcat/webapps/"
+            sh " scp -o StrictHostKeyChecking=no  target/maven-web-application.war ubuntu@3.130.233.30:/opt/tomcat/webapps/"
         }
     }
     stage('sending_mail')
