@@ -23,7 +23,7 @@ properties([pipelineTriggers([cron('* * * * *')])])
     
     stage('deploy_app_into_tomcat')
     {
-        sshagent(['8d00850c-a328-4366-a18d-ed020d7462ae'])
+        sshagent(['5923d94a-2e33-4cb1-a6e0-61a85e8c9ba0'])
         {
             sh " scp -o StrictHostKeyChecking=no  target/maven-web-application.war ubuntu@3.130.233.30:/opt/tomcat/webapps/"
         }
