@@ -11,7 +11,7 @@ def maven_home = tool name: "maven"
     {
         sh "${maven_home}/bin/mvn clean package"
     }
-    /**
+    
     stage('execute_sonar_qube')
     {
         sh "${maven_home}/bin/mvn sonar:sonar"
@@ -20,7 +20,7 @@ def maven_home = tool name: "maven"
     {
         sh "${maven_home}/bin/mvn deploy"
     }
-    
+    /**
     stage('deploy_app_into_tomcat')
     {
         sshagent(['5923d94a-2e33-4cb1-a6e0-61a85e8c9ba0'])
@@ -33,10 +33,10 @@ def maven_home = tool name: "maven"
         mail bcc: '', body: '''-----------build report------------
 ''', cc: 'bethapudi206@gmail.com', from: '', replyTo: '', subject: 'pipeline_project build report', to: 'devops.javin@gmail.com'
     }
-    **/
+   
     stage('build docker images')
     {
        sh "docker build -t dockerhandson/spring-boot-mongo:latest ."
     }
-
+ **/
 }
